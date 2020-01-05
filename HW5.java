@@ -1,16 +1,8 @@
-
-/**
- * Author: Laura Nee
- * Fall 2019 CSCI 221 HW 5
- * This program is entirely my own work.
- * 
- * HW5 plays John Conway's Game of Life.
- */
 import java.util.*; // to use Scanner
 import java.io.*;  // to work with files
-public class HW5
+public class GameOfLife
 {
-   public static char[] [] init(String filename) throws IOException {
+   public static char[][] init(String filename) throws IOException {
        // create/open file
        File inputFile = new File(filename);
        Scanner input = new Scanner(inputFile);
@@ -97,7 +89,6 @@ public class HW5
            for (int j = 0; j < currGen.length; ++j){
                numNeighbors = getNeighbors(currGen, i, j);
                if (numNeighbors < 2 || numNeighbors > 3){//death
-                   //death of an empty cell is the same as no change at all
                    nextGen[i][j] = ' ';
                }
                else if (numNeighbors == 3 && currGen[i][j] != '*'){//birth
