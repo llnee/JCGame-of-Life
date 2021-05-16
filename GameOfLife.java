@@ -102,8 +102,8 @@ public class GameOfLife
     }
    
    /*
-    * Returns true if the next gen is not equal to this gen, if the nextNext
-    * gen is not equal to this one, and if the next gen has at least one 
+    * Returns true if: the next gen is not equal to this gen, the nextNext
+    * gen is not equal to this one, and the next gen has at least one 
     * organism.
    */
    public static boolean validNextGen(char[][] currGen){
@@ -128,11 +128,9 @@ public class GameOfLife
        if (gensEqual1)
            System.out.println("two consecutive gens were equal");
        if (gensEqual2)
-           System.out.println("alternating pattern of gens equal");
+           System.out.println("alternating pattern of gens were equal");
        
-       if (filled && !gensEqual1 && !gensEqual2)
-           return true;
-       return false;
+       return (filled && !gensEqual1 && !gensEqual2);
    }
 
    public static void main(String [] args) throws IOException
@@ -142,26 +140,22 @@ public class GameOfLife
        else
        {
            File inputFile = new File(args[0]);
-           //Scanner input = new Scanner(inputFile);
            Scanner keyboard = new Scanner(System.in);
            
-           //makes a gameboard with correctly filled cells based on the
-           // input file
+           //makes a gameboard with correctly filled cells, as given
+           // by the input file
            char[][] currGen = init(args[0]);
            
            int genCount = 0;
            System.out.println("How many generations of Life would you like to play? ");
            int genLimit = keyboard.nextInt();
            
-           String continuousDisplay = "";
+           String continuous = "";
            boolean validInput = false;
            while (!validInput){
                System.out.println("Do you want generations to be displayed continuously? Enter Y or N.");
-               continuousDisplay = keyboard.next(); //'N' or 'Y'
-               if (continuousDisplay.equalsIgnoreCase("Y")){//display gens consecutively
-                   validInput = true;
-               }
-               else if (continuousDisplay.equalsIgnoreCase("N")){//user hits enter key to see nextGen
+               continuous = keyboard.next(); //'N' or 'Y'
+               if (continuous.equalsIgnoreCase("Y") || continuous.equalsIgnoreCase("N")){
                    validInput = true;
                }
                else 
@@ -172,13 +166,13 @@ public class GameOfLife
            while (validNextGen(currGen) && genCount <= genLimit-1){
                //play game
                enter = " ";
-               if (continuousDisplay.equalsIgnoreCase("Y")){
+               if (continuous.equalsIgnoreCase("Y")){
                    currGen = nextGeneration(currGen);
                    genCount+=1;
                    display(genCount, currGen);
                }
                else {//prompt for enter key/input
-                   System.out.println("Press enter to see next generation");
+                   System.out.println("Press enter to see next generation.");
                    enter = keyboard.nextLine();
                    currGen = nextGeneration(currGen);
                    genCount+=1;
