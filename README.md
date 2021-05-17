@@ -3,7 +3,7 @@ A simulation of John Conway's game of life played on a finite board where cells 
 
 The game board is represented by a 2D-array.
 
-GameOfLife asks the user for a file name. The given set of GOLInit.txt files each contain a series of coordinates that are used to initialize different staring points for the game, which the program will use to generate future generations. The first set of coordinates specifies the game board dimensions. Input files should be given to the main method as a parameter before the program is run.
+GameOfLife asks the user for a file name. The given set of GOLInit.txt files each contain a series of coordinates that are used to initialize different starting generations for the game, which the program will use to generate future generations. The first set of coordinates specifies the game board dimensions. Input files should be given to the main method as a parameter before the program is run.
 
 The program asks the user to input the number of generations they would like to see played out. Then, the program asks if the user would like to see the generations printed continuously. Continuously printed generations are printed one after the other without interuption, while non-continuously printed generations will print one at a time and wait for the user to press the Enter key before printing the next generation.
 
